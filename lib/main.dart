@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_imtixon/SignIn.dart';
+import 'package:flutter_imtixon/SignUp.dart';
+import 'package:flutter_imtixon/Splash.dart';
 
 void main() {
   runApp(const MainFile());
@@ -10,7 +13,8 @@ class MainFile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ,
+      debugShowCheckedModeBanner: false,
+      home: SignUp(),
     );
   }
 }

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_imtixon/Coffee.dart';
+import 'package:flutter_imtixon/Home.dart';
+import 'package:flutter_imtixon/PageOne.dart';
 import 'package:flutter_imtixon/SignIn.dart';
 import 'package:flutter_imtixon/SignUp.dart';
 import 'package:flutter_imtixon/Splash.dart';
+import 'package:flutter_imtixon/buySide.dart';
 
 void main() {
   runApp(const MainFile());
@@ -14,7 +18,7 @@ class MainFile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      home: BuySide(image: '', title: '', price: '', star: '',),
     );
   }
 }

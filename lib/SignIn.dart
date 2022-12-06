@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_imtixon/Home.dart';
 import 'package:flutter_imtixon/SignUp.dart';
+import 'package:flutter_imtixon/Splash.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -23,20 +25,21 @@ class _SignInState extends State<SignIn> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(
-            onTap: (){
-              Navigator.pop(context);
-            },
-            child: Container(
-              margin: EdgeInsets.only(top: 60, left: 20),
-              child: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.black,
-                size: 30,
-              ),
-            ),
-          ),
+          // InkWell(
+          //   onTap: (){
+          //     Navigator.of(context).push(MaterialPageRoute(builder: (_)=>SplashPage()));
+          //   },
+          //   child: Container(
+          //     margin: EdgeInsets.only(top: 60, left: 20),
+          //     child: Icon(
+          //       Icons.arrow_back_rounded,
+          //       color: Colors.black,
+          //       size: 30,
+          //     ),
+          //   ),
+          // ),
 
+          SizedBox(height: 100,),
           SizedBox(
             height: 60,
           ),
@@ -97,10 +100,10 @@ class _SignInState extends State<SignIn> {
                          margin: EdgeInsets.only(left: 10, top: 3),
                          child: TextFormField(
                            onChanged: (a) {
-                             isPasswordEmpty = false;
+                             isEmailEmpty = false;
                              setState(() {});
                            },
-                           obscureText: isPasswordVisible,
+                           controller: email,
                            keyboardType: TextInputType.emailAddress,
                            decoration: InputDecoration(
                                hintText: "Email address",
@@ -178,6 +181,7 @@ class _SignInState extends State<SignIn> {
                             },
                             obscureText: isPasswordVisible,
                             keyboardType: TextInputType.emailAddress,
+                            controller: password,
                             decoration: InputDecoration(
                                 suffixIcon: Container(
                                   child: IconButton(
@@ -253,7 +257,7 @@ class _SignInState extends State<SignIn> {
           InkWell(
             onTap: () {
               if (email.text.isNotEmpty && password.text.isNotEmpty) {
-                 Navigator.push(context, MaterialPageRoute(builder: (_)=>SignUp()));
+                 Navigator.push(context, MaterialPageRoute(builder: (_)=>HomePage()));
               } else if (email.text.isEmpty && password.text.isEmpty) {
                 isEmailEmpty = true;
                 isPasswordEmpty = true;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_imtixon/Home.dart';
 import 'package:flutter_imtixon/SignIn.dart';
 import 'package:flutter_imtixon/SignUp.dart';
+import 'package:flutter_imtixon/Splash.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -102,11 +104,11 @@ class _SignUpState extends State<SignUp> {
                           margin: EdgeInsets.only(left: 10, top: 3),
                           child: TextFormField(
                             onChanged: (a) {
-                              isPasswordEmpty = false;
+                              isUsernameEmpty = false;
                               setState(() {});
                             },
-                            obscureText: isPasswordVisible,
-                            keyboardType: TextInputType.emailAddress,
+                            controller: username,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                                 hintText: "Username",
                                 hintStyle: TextStyle(
@@ -178,11 +180,11 @@ class _SignUpState extends State<SignUp> {
                           margin: EdgeInsets.only(left: 10, top: 3),
                           child: TextFormField(
                             onChanged: (a) {
-                              isPasswordEmpty = false;
+                              isPhoneEmpty = false;
                               setState(() {});
                             },
-                            obscureText: isPasswordVisible,
-                            keyboardType: TextInputType.emailAddress,
+                            controller: phone,
+                            keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                                 hintText: "Mobile Phone",
                                 hintStyle: TextStyle(
@@ -254,10 +256,10 @@ class _SignUpState extends State<SignUp> {
                           margin: EdgeInsets.only(left: 10, top: 3),
                           child: TextFormField(
                             onChanged: (a) {
-                              isPasswordEmpty = false;
+                              isEmailEmpty = false;
                               setState(() {});
                             },
-                            obscureText: isPasswordVisible,
+                            controller: email,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                                 hintText: "Email address",
@@ -334,7 +336,8 @@ class _SignUpState extends State<SignUp> {
                               setState(() {});
                             },
                             obscureText: isPasswordVisible,
-                            keyboardType: TextInputType.emailAddress,
+                            controller: password,
+                            keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
                                 suffixIcon: Container(
                                   child: IconButton(
@@ -408,11 +411,19 @@ class _SignUpState extends State<SignUp> {
 
           InkWell(
             onTap: () {
-              if (email.text.isNotEmpty && password.text.isNotEmpty) {
-                Navigator.push(context, MaterialPageRoute(builder: (_)=>SignUp()));
-              } else if (email.text.isEmpty && password.text.isEmpty) {
+              if (email.text.isNotEmpty && phone.text.isNotEmpty && username.text.isNotEmpty && password.text.isNotEmpty) {
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>HomePage()));
+              } else if (email.text.isEmpty && phone.text.isEmpty && username.text.isEmpty && password.text.isEmpty) {
                 isEmailEmpty = true;
                 isPasswordEmpty = true;
+                isPhoneEmpty = true;
+                isUsernameEmpty = true;
+                setState(() {});
+              } else if (username.text.isEmpty) {
+                isUsernameEmpty = true;
+                setState(() {});
+              } else if (phone.text.isEmpty) {
+                isPhoneEmpty = true;
                 setState(() {});
               } else if (email.text.isEmpty) {
                 isEmailEmpty = true;
